@@ -1,0 +1,3 @@
+<p>Passig value form parent: {{username}}</p>
+<p>Getting count value form child component: {{currentCount}}</p>
+<app-user-info [userName]="username" (countChanged)="updatedCount($event)"></app-user-info>
