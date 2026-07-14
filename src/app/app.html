@@ -1,8 +1,9 @@
 <router-outlet></router-outlet>
-
+@if(router.url=='/user'){
 <h2>NgRx COunter App</h2>
 
 <h2>Counter : {{counter$ | async}}</h2>
 <button (click)="incrementCount()">+</button>
 <button (click)="decrimentCount()">-</button>
 <button (click)="resetCount()">Reset Count</button>
+}

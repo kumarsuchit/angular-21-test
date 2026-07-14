@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { decrement, increment, reset } from './store/counter.actions';
 import { Observable } from 'rxjs';
@@ -16,9 +16,10 @@ export class App {
 
   counter$!: Observable<number>
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    public router: Router
   ) {
-    this.counter$ = this.store.select(selectCounter)
+    this.counter$ = this.store.select(selectCounter);
   }
 
   incrementCount() {
