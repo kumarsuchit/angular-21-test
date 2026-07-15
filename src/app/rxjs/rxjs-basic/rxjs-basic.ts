@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { from, interval, Observable, of, timer } from 'rxjs';
+import { from, interval, Observable, of, take, timer } from 'rxjs';
 
 @Component({
   selector: 'app-rxjs-basic',
   imports: [],
   templateUrl: './rxjs-basic.html',
-  styleUrl: './rxjs-basic.css',
-  standalone: true
+  styleUrl: './rxjs-basic.css'
 })
 export class RxjsBasic {
 
@@ -56,8 +55,14 @@ export class RxjsBasic {
     })
 
     // ******************** 4th way to call observable ***********
-    this.interval$.subscribe((res: number) => {
-      console.log("Interver =>", res);
+    // this.interval$.subscribe((res: number) => {
+    //   console.log("Interver =>", res);
+    // })
+
+    this.interval$.pipe(
+      take(6)
+    ).subscribe((res: number) => {
+      console.log("after 6 time hit it will stop because we use take(6)=>", res);
     })
 
     // ******************** 5th way to call observable ***********
